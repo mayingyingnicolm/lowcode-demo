@@ -19,14 +19,10 @@ const SamplePreview = () => {
   const [data, setData] = useState({});
 
   async function init() {
-
     const packages = JSON.parse(window.localStorage.getItem('packages') || '');
 
     const projectSchema = JSON.parse(window.localStorage.getItem('projectSchema') || '');
     window.projectSchema=projectSchema;
-
-    const scenarioName = getScenarioName();
-  
     const { componentsMap: componentsMapArray, componentsTree } = projectSchema;
     const componentsMap: any = {};
     componentsMapArray.forEach((component: any) => {
