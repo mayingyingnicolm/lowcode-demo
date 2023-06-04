@@ -1,6 +1,9 @@
+const fs = require('fs-extra');
+const configuration = require('./build.json');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const { version } = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 
 module.exports = ({ onGetWebpackConfig }) => {
   onGetWebpackConfig((config) => {
@@ -15,45 +18,42 @@ module.exports = ({ onGetWebpackConfig }) => {
         fs: 'empty',
       },
     });
-    config.merge({
-      entry: {
-        index: require.resolve('./src/index.ts'),
-        preview: require.resolve('./src/preview.tsx'),
-      },
-    });
-    config
-      .plugin('index')
-      .use(HtmlWebpackPlugin, [
-        {
-          inject: false,
-          templateParameters: {
-          },
-          template: require.resolve('./public/index.html'),
-          filename: 'index.html',
-        },
-      ]);
-    config
-      .plugin('index-custom')
-      .use(HtmlWebpackPlugin, [
-        {
-          inject: false,
-          templateParameters: {
-          },
-          template: require.resolve('./public/index-custom.html'),
-          filename: 'index-custom.html',
-        },
-      ]);
-    config
-      .plugin('preview')
-      .use(HtmlWebpackPlugin, [
-        {
-          inject: false,
-          templateParameters: {
-          },
-          template: require.resolve('./public/preview.html'),
-          filename: 'preview.html',
-        },
-      ]);
+    const entries = Object.keys(configuration.entry) || [];
+    entries.map((entry) => {
+      const [scenarioName, page] = entry.split('/');
+      if (page === 'index') {
+        config
+          .plugin(entry)
+          .use(HtmlWebpackPlugin, [
+            {
+              inject: false,
+              minify: false,
+              templateParameters: {
+                version,
+                scenarioName
+              },
+              template: require.resolve('./public/index.ejs'),
+              filename: `${scenarioName}/index.html`,
+            },
+          ]);
+      }
+      if (page === 'preview') {
+        config
+          .plugin(entry)
+          .use(HtmlWebpackPlugin, [
+            {
+              inject: false,
+              minify: false,
+              templateParameters: {
+                scenarioName,
+              },
+              template: require.resolve('./public/preview.html'),
+              filename: `${scenarioName}/preview.html`,
+            },
+          ]);
+
+      }
+    })
 
     config.plugins.delete('hot');
     config.devServer.hot(false);

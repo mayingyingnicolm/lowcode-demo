@@ -1,7 +1,7 @@
 {
   "proxy": "http://localhost:8080",
   "name": "@alilc/lowcode-demo",
-  "version": "1.0.5",
+  "version": "1.1.63",
   "description": "Low-Code Engine 低代码搭建引擎 Demo 项目",
   "repository": "git@github.com:alibaba/lowcode-demo.git",
   "license": "MIT",
@@ -10,7 +10,9 @@
     "start": "build-scripts start --disable-reload --port 5556",
     "build": "build-scripts build",
     "prepublishOnly": "npm run build",
-    "pub": "node ./scripts/watchdog.js && npm pub"
+    "pub": "node ./scripts/watchdog.js && npm pub",
+    "sync": "tnpm sync @alilc/lowcode-demo",
+    "syncOss": "node ./scripts/sync-oss.js"
   },
   "files": [
     "build"
@@ -44,9 +46,19 @@
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",
     "@types/streamsaver": "^2.0.0",
+    "@types/uuid": "^8.3.4",
     "build-plugin-fusion": "^0.1.0",
     "build-plugin-moment-locales": "^0.1.0",
     "build-plugin-react-app": "^1.1.2",
+    "fs-extra": "^10.0.1",
     "tsconfig-paths-webpack-plugin": "^3.2.0"
+  },
+  "resolutions": {
+    "@babel/core": "7.20.12",
+    "@formily/antd": "2.2.15",
+    "@formily/core": "2.2.15",
+    "@formily/react": "2.2.15",
+    "@formily/next": "2.2.15",
+    "@monaco-editor/react": "4.4.6"
   }
 }
