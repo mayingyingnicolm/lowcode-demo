@@ -1,0 +1,410 @@
+{
+    "componentName": "Page",
+    "id": "node_dockcviv8fo1",
+    "props": {
+      "ref": "outerView",
+      "style": {
+        "height": "100%"
+      }
+    },
+    "fileName": "/",
+    "dataSource": {
+      "list": [
+        {
+          "type": "fetch",
+          "isInit": true,
+          "options": {
+            "params": {},
+            "method": "GET",
+            "isCors": true,
+            "timeout": 5000,
+            "headers": {},
+            "uri": "mock/info.json"
+          },
+          "id": "info"
+        },
+        {
+          "type": "fetch",
+          "isInit": true,
+          "options": {
+            "params": {},
+            "method": "GET",
+            "isCors": true,
+            "timeout": 5000,
+            "headers": {
+              "Content-Type": "application/json"
+            },
+            "uri": "http://localhost:8080/noone/ul/plm/entity/Material/list.uli"
+          },
+          "id": "list",
+          "dataHandler": {
+            "type": "JSFunction",
+            "value": "function(res) { res.data.pageSize=res.data.f_size;res.data.total=res.data.f_total;res.data.hidden=false;console.log(res.data);return res.data }"
+          }
+        }
+      ]
+    },
+    "state": {
+      "text": {
+        "type": "JSExpression",
+        "value": "\"outer\""
+      },
+      "isShowDialog": {
+        "type": "JSExpression",
+        "value": "false"
+      }
+    },
+    "css": "body {\n  font-size: 12px;\n}\n\n.button {\n  width: 100px;\n  color: #ff00ff\n}",
+    "lifeCycles": {
+      "componentDidMount": {
+        "type": "JSFunction",
+        "value": "function componentDidMount() {\n  console.log('did mount');\n}"
+      },
+      "componentWillUnmount": {
+        "type": "JSFunction",
+        "value": "function componentWillUnmount() {\n  console.log('will unmount');\n}"
+      }
+    },
+    "methods": {
+      "testFunc": {
+        "type": "JSFunction",
+        "value": "function testFunc() {\n  console.log('test func');\n}"
+      },
+      "onClick": {
+        "type": "JSFunction",
+        "value": "function onClick() {\n  this.setState({\n    isShowDialog: true\n  });\n}"
+      },
+      "closeDialog": {
+        "type": "JSFunction",
+        "value": "function closeDialog() {\n  this.setState({\n    isShowDialog: false\n  });\n}"
+      }
+    },
+    "originCode": "class LowcodeComponent extends Component {\n  state = {\n    \"text\": \"outer\",\n    \"isShowDialog\": false\n  }\n  componentDidMount() {\n    console.log('did mount');\n  }\n  componentWillUnmount() {\n    console.log('will unmount');\n  }\n  testFunc() {\n    console.log('test func');\n  }\n  onClick() {\n    this.setState({\n      isShowDialog: true\n    })\n  }\n  closeDialog() {\n    this.setState({\n      isShowDialog: false\n    })\n  }\n}",
+    "hidden": false,
+    "title": "",
+    "isLocked": false,
+    "condition": true,
+    "conditionGroup": "",
+    "children": [
+      {
+        "componentName": "NextPage",
+        "id": "node_ockzs2vw431",
+        "props": {
+          "headerDivider": true,
+          "minHeight": "100vh",
+          "presetNav": true,
+          "presetAside": true,
+          "footer": false,
+          "nav": false,
+          "aside": false,
+          "placeholderStyle": {
+            "gridRowEnd": "span 1",
+            "gridColumnEnd": "span 12"
+          },
+          "headerProps": {
+            "background": "surface"
+          },
+          "header": {
+            "type": "JSSlot",
+            "value": [
+              {
+                "componentName": "NextPageHeader",
+                "id": "node_ockzs2vw433",
+                "props": {
+                  "style": {
+                    "background": "#ffffff",
+                    "padding": ""
+                  }
+                },
+                "title": "页面头部",
+                "hidden": false,
+                "isLocked": false,
+                "condition": true,
+                "conditionGroup": "",
+                "children": [
+                  {
+                    "componentName": "NextRowColContainer",
+                    "id": "node_ockzs2vw434",
+                    "props": {
+                      "rowGap": 20,
+                      "colGap": 20
+                    },
+                    "title": "行列容器",
+                    "hidden": false,
+                    "isLocked": false,
+                    "condition": true,
+                    "conditionGroup": "",
+                    "children": [
+                      {
+                        "componentName": "NextRow",
+                        "id": "node_ockzs2vw435",
+                        "props": {},
+                        "title": "行",
+                        "hidden": false,
+                        "isLocked": false,
+                        "condition": true,
+                        "conditionGroup": "",
+                        "children": [
+                          {
+                            "componentName": "NextCol",
+                            "id": "node_ockzs2vw436",
+                            "props": {
+                              "colSpan": 1
+                            },
+                            "title": "列",
+                            "hidden": false,
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                              {
+                                "componentName": "NextP",
+                                "id": "node_ockzvfoetv17",
+                                "props": {
+                                  "wrap": false,
+                                  "type": "body2",
+                                  "verAlign": "middle",
+                                  "textSpacing": true,
+                                  "align": "left"
+                                },
+                                "docId": "dockzvfoetv",
+                                "title": "段落",
+                                "hidden": false,
+                                "isLocked": false,
+                                "condition": true,
+                                "conditionGroup": "",
+                                "children": [
+                                  {
+                                    "componentName": "NextText",
+                                    "id": "node_ockzvfoetv18",
+                                    "props": {
+                                      "type": "h5",
+                                      "children": {
+                                        "type": "JSExpression",
+                                        "value": "this.state.info?.info",
+                                        "mock": "标题标题"
+                                      },
+                                      "mark": false,
+                                      "code": false,
+                                      "delete": false,
+                                      "underline": false,
+                                      "strong": false
+                                    },
+                                    "docId": "dockzvfoetv",
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "title": "header"
+          },
+          "isTab": false,
+          "contentAlignCenter": false,
+          "contentProps": {
+            "style": {
+              "background": "rgba(255,255,255,0)"
+            }
+          }
+        },
+        "title": "页面",
+        "hidden": false,
+        "isLocked": false,
+        "condition": true,
+        "conditionGroup": "",
+        "children": [
+          {
+            "componentName": "NextBlock",
+            "id": "node_ocl0vuhgne7",
+            "props": {
+              "placeholderStyle": {
+                "height": "100%"
+              },
+              "noPadding": false,
+              "noBorder": false,
+              "title": "区域标题",
+              "rowGap": 20,
+              "colGap": 20,
+              "background": "surface",
+              "layoutmode": "O",
+              "strict": true,
+              "colSpan": 12,
+              "rowSpan": 1,
+              "mode": "transparent",
+              "childTotalColumns": 12
+            },
+            "title": "区域",
+            "hidden": false,
+            "isLocked": false,
+            "condition": true,
+            "conditionGroup": "",
+            "children": [
+              {
+                "componentName": "NextBlockCell",
+                "id": "node_ocl0vuhgne8",
+                "props": {
+                  "colSpan": 12,
+                  "rowSpan": 1,
+                  "mode": "procard",
+                  "isAutoContainer": true,
+                  "title": "区块标题"
+                },
+                "hidden": false,
+                "title": "",
+                "isLocked": false,
+                "condition": true,
+                "conditionGroup": "",
+                "children": [
+                  {
+                    "componentName": "NextRowColContainer",
+                    "id": "node_ocl0vuhgne9",
+                    "props": {
+                      "rowGap": 20,
+                      "colGap": 20
+                    },
+                    "title": "行列容器",
+                    "hidden": false,
+                    "isLocked": false,
+                    "condition": true,
+                    "conditionGroup": "",
+                    "children": [
+                      {
+                        "componentName": "NextRow",
+                        "id": "node_ocl0vuhgnea",
+                        "props": {},
+                        "title": "行",
+                        "hidden": false,
+                        "isLocked": false,
+                        "condition": true,
+                        "conditionGroup": "",
+                        "children": [
+                          {
+                            "componentName": "NextCol",
+                            "id": "node_ocl0vuhgneb",
+                            "props": {
+                              "colSpan": 1
+                            },
+                            "title": "列",
+                            "hidden": false,
+                            "isLocked": false,
+                            "condition": true,
+                            "conditionGroup": "",
+                            "children": [
+                              {
+                                "componentName": "NextP",
+                                "id": "node_ocl0vuhgnec",
+                                "props": {
+                                  "wrap": false,
+                                  "type": "body2",
+                                  "verAlign": "middle",
+                                  "textSpacing": true,
+                                  "align": "left"
+                                },
+                                "title": "段落",
+                                "hidden": false,
+                                "isLocked": false,
+                                "condition": true,
+                                "conditionGroup": "",
+                                "children": [
+                                  {
+                                    "componentName": "ProTable",
+                                    "id": "node_ocl0vuhgned",
+                                    "props": {
+                                      "dataSource": {
+                                        "type": "JSExpression",
+                                        "value": "this.state.list.list"
+                                      },
+                                      "actionColumnButtons": {
+                                        "dataSource": [
+                                          {
+                                            "children": "查看",
+                                            "type": "primary"
+                                          },
+                                          {
+                                            "children": "编辑",
+                                            "type": "primary",
+                                            "disabled": true
+                                          },
+                                          {
+                                            "children": "删除",
+                                            "type": "primary"
+                                          }
+                                        ],
+                                        "text": true,
+                                        "visibleButtonCount": 3
+                                      },
+                                      "actionBarButtons": {
+                                        "dataSource": [
+                                          {
+                                            "type": "primary",
+                                            "children": "操作一"
+                                          },
+                                          {
+                                            "type": "normal",
+                                            "children": "操作二"
+                                          }
+                                        ],
+                                        "visibleButtonCount": 3
+                                      },
+                                      "paginationProps": {
+                                        "type": "JSExpression",
+                                        "value": "this.state.list"
+                                      },
+                                      "settingButtons": true,
+                                      "columns": [
+                                        {
+                                          "title": "名称",
+                                          "dataIndex": "name",
+                                          "width": 160,
+                                          "formatType": "text",
+                                          "searchable": true
+                                        },
+                                        {
+                                          "title": "制造商名称",
+                                          "dataIndex": "manufacturer",
+                                          "formatType": "text"
+                                        }
+                                      ],
+                                      "actionColumnProps": {
+                                        "title": "操作"
+                                      },
+                                      "indexColumn": false,
+                                      "hasBorder": false,
+                                      "isZebra": false,
+                                      "fixedHeader": false,
+                                      "size": "medium"
+                                    },
+                                    "docId": "docl0vuhgne",
+                                    "hidden": false,
+                                    "title": "",
+                                    "isLocked": false,
+                                    "condition": true,
+                                    "conditionGroup": ""
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

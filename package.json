@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:8080",
   "name": "@alilc/lowcode-demo",
   "version": "1.0.5",
   "description": "Low-Code Engine 低代码搭建引擎 Demo 项目",
@@ -16,6 +17,7 @@
   ],
   "config": {},
   "dependencies": {
+    "@alifd/fusion-ui": "^1.0.7",
     "@alilc/lowcode-plugin-code-editor": "^1.0.1",
     "@alilc/lowcode-plugin-code-generator": "^1.0.2",
     "@alilc/lowcode-plugin-components-pane": "^1.0.2",
@@ -27,14 +29,17 @@
     "@alilc/lowcode-plugin-undo-redo": "^1.0.0",
     "@alilc/lowcode-plugin-zh-en": "^1.0.0",
     "@alilc/lowcode-react-renderer": "^1.0.0",
+    "@alilc/lowcode-react-simulator-renderer": "^1.0.6",
     "@alilc/lowcode-setter-behavior": "^1.0.0",
-    "@alilc/lowcode-setter-title": "^1.0.2"
+    "@alilc/lowcode-setter-title": "^1.0.2",
+    "axios": "^0.26.1",
+    "myy-other-components": "^0.2.0"
   },
   "devDependencies": {
+    "@alib/build-scripts": "^0.1.18",
     "@alilc/lowcode-engine": "^1.0.0",
     "@alilc/lowcode-engine-ext": "^1.0.0",
     "@alilc/lowcode-types": "^1.0.0",
-    "@alib/build-scripts": "^0.1.18",
     "@types/events": "^3.0.0",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.2",

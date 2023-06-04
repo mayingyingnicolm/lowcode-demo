@@ -10,6 +10,7 @@ import AliLowCodeEngineExt from '@alilc/lowcode-engine-ext';
 import { Button } from '@alifd/next';
 import UndoRedoPlugin from '@alilc/lowcode-plugin-undo-redo';
 import ComponentsPane from '@alilc/lowcode-plugin-components-pane';
+import OutlinePane from '@alilc/lowcode-plugin-outline-pane';
 import ZhEnPlugin from '@alilc/lowcode-plugin-zh-en';
 import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
 import DataSourcePanePlugin from '@alilc/lowcode-plugin-datasource-pane';
@@ -24,6 +25,7 @@ import TitleSetter from '@alilc/lowcode-setter-title';
 import BehaviorSetter from '../setters/behavior-setter';
 import CustomSetter from '../setters/custom-setter';
 import Logo from '../sample-plugins/logo';
+import MyComponentsList from '../sample-plugins/myComponentsList';
 
 import {
   loadIncrementalAssets,
@@ -31,6 +33,7 @@ import {
   saveSchema,
   resetSchema,
   preview,
+  saveCode
 } from './utils';
 import assets from '../../public/assets.json'
 
@@ -91,6 +94,27 @@ export default async function registerPlugins() {
           },
         });
 
+        // 注册 自定义组件list 面板
+        const myComponentsListPane = skeleton.add({
+          area: 'leftArea',
+          type: 'PanelDock',
+          name: 'myComponentsListPane',
+          content: MyComponentsList,
+          contentProps: {
+            logo: 'https://img.alicdn.com/imgextra/i4/O1CN013w2bmQ25WAIha4Hx9_!!6000000007533-55-tps-137-26.svg',
+            href: 'https://lowcode-engine.cn',
+          },
+          props: {
+            align: 'top',
+            icon: 'zidingyizujianku',
+            description: '自定义组件库',
+          },
+        });
+        myComponentsListPane?.disable?.();
+        project.onSimulatorRendererReady(() => {
+          myComponentsListPane?.enable?.();
+        })
+        
         // 注册组件面板
         const componentsPane = skeleton.add({
           area: 'leftArea',
@@ -255,6 +279,34 @@ export default async function registerPlugins() {
   };
   previewSample.pluginName = 'previewSample';
   await plugins.register(previewSample);
+
+  const saveCodeSample = (ctx: ILowCodePluginContext) => {
+    return {
+      name: 'saveCodeSample',
+      async init() {
+        const { skeleton } = ctx;
+        skeleton.add({
+          name: 'saveCodeSample',
+          area: 'topArea',
+          type: 'Widget',
+          props: {
+            align: 'right',
+          },
+          content: (
+            <Button type="primary" onClick={saveCode}>
+              保存
+            </Button>
+          ),
+        });
+      },
+    };
+  };
+  saveCodeSample.pluginName = 'saveCodeSample';
+  await plugins.register(saveCodeSample);
+
+
+
+
 
   const customSetter = (ctx: ILowCodePluginContext) => {
     return {

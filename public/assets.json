@@ -66,12 +66,25 @@
       "version": "1.0.5-beta.1",
       "library": "AlifdFusionUi",
       "urls": [
-        "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/dist/AlifdFusionUi.js",
+        "./AlifdFusionUi.js",
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/dist/AlifdFusionUi.css"
       ],
       "editUrls": [
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/build/lowcode/view.js",
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/build/lowcode/view.css"
+      ]
+    },
+    {
+      "package": "myy-other-components",
+      "version": "0.2.0",
+      "library": "MyyOtherComponents",
+      "urls": [
+        "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/view.js",
+        "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/view.css"
+      ],
+      "editUrls": [
+        "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/view.js",
+        "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/view.css"
       ]
     }
   ],
@@ -108,6 +121,18 @@
       "urls": {
         "default": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/build/lowcode/meta.js",
         "design": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5-beta.1/build/lowcode/meta.design.js"
+      }
+    },
+    {
+      "exportName": "MyyOtherComponentsMeta",
+      "npm": {
+        "package": "myy-other-components",
+        "version": "0.2.0"
+      },
+      "url": "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/meta.js",
+      "urls": {
+        "default": "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/meta.js",
+        "design": "https://unpkg.com/myy-other-components@0.2.0/build/lowcode/meta.design.js"
       }
     }
   ],

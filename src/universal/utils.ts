@@ -151,6 +151,18 @@ export const preview = () => {
   }, 500);
 };
 
+export const saveCode = () => {
+  
+  Message.success(project.currentDocument?.selection.selected[0])
+
+  let selected=project.currentDocument?.selection.selected[0]
+  let node=project.currentDocument?.nodesMap.get(selected)
+  console.log(node)
+  console.log(node?.exportSchema());
+ 
+ 
+}
+
 export const saveSchema = async () => {
   window.localStorage.setItem(
     'projectSchema',
