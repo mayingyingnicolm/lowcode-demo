@@ -1,7 +1,11 @@
 {
   "proxy": "http://localhost:8080",
   "name": "@alilc/lowcode-demo",
+<<<<<<< HEAD
   "version": "1.1.63",
+=======
+  "version": "1.0.28",
+>>>>>>> ec464015787cf151c9b6dd3c93d64ef284d15988
   "description": "Low-Code Engine 低代码搭建引擎 Demo 项目",
   "repository": "git@github.com:alibaba/lowcode-demo.git",
   "license": "MIT",
